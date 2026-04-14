@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Contact Reggie — R&S Cleaning Solutions Key West</title>
+  <meta name="description" content="Contact R&S Cleaning Solutions in Key West. Call or text Reggie at (305) 589-8981. 5790 Maloney Ave, Key West FL 33040. Open 7 days a week, 7AM–7PM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      padding: 56px 0 80px;
+    }
+    @media(max-width:768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 64px; }
+    }
+
+    /* Left: info panel */
+    .contact-info { }
+    .contact-info__label {
+      display: inline-block;
+      font-family: var(--font-h);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .contact-info h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.15;
+      margin: 0 0 14px;
+    }
+    .contact-info__sub {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color .2s, box-shadow .2s, transform .15s;
+      box-shadow: 0 2px 8px rgba(0,80,160,0.05);
+    }
+    .contact-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 20px rgba(9,132,227,0.12);
+      transform: translateY(-2px);
+    }
+    .contact-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .contact-card--call .contact-card__icon { background: var(--accent-dim); }
+    .contact-card--sms .contact-card__icon { background: var(--teal-dim); }
+    .contact-card--email .contact-card__icon { background: rgba(245,166,35,0.08); }
+    .contact-card--address .contact-card__icon { background: rgba(108,92,231,0.08); }
+    .contact-card__label {
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .contact-card__value {
+      font-family: var(--font-h);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .contact-card--call .contact-card__value { color: var(--accent); }
+    .contact-card--sms .contact-card__value { color: var(--teal); }
+
+    .contact-hours {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 28px;
+    }
+    .contact-hours h3 {
+      font-family: var(--font-h);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 10px;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .88rem;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row span:last-child { color: var(--text); font-weight: 600; }
+
+    .contact-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Right: map panel */
+    .contact-map { }
+    .map-frame {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      background: var(--surface);
+    }
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 380px;
+      border: none;
+    }
+    @media(max-width:768px) {
+      .map-frame iframe { height: 280px; }
+    }
+    .map-caption {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+    .map-caption__icon { font-size: 1.4rem; }
+    .map-caption__text { font-size: .875rem; color: var(--muted); line-height: 1.5; }
+    .map-caption__text strong { color: var(--text); display: block; font-family: var(--font-h); }
+
+    /* Quick message form */
+    .quick-form-section {
+      padding: 0 0 72px;
+    }
+    .quick-form-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .quick-form-header h2 {
+      font-family: var(--font-h);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text);
+      margin: 8px 0 10px;
+    }
+    .quick-form-header p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .quick-form-card {
+      max-width: 620px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+    }
+    @media(max-width:640px) {
+      .quick-form-card { padding: 24px 18px; }
+    }
+    .quick-form-card .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .quick-form-card label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--text);
+      font-family: var(--font-h);
+    }
+    .quick-form-card input,
+    .quick-form-card textarea,
+    .quick-form-card select {
+      font-size: 16px;
+      font-family: var(--font-b);
+      color: var(--text);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      min-height: 44px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color .2s;
+    }
+    .quick-form-card input:focus,
+    .quick-form-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .quick-form-card textarea { min-height: 120px; resize: vertical; }
+    .btn--submit-contact {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-h);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 15px 24px;
+      cursor: pointer;
+      min-height: 50px;
+      transition: background .2s, transform .1s;
+    }
+    .btn--submit-contact:hover { background: #00b5b0; }
+    .btn--submit-contact:active { transform: scale(.98); }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span>📍 5790 Maloney Ave, Key West, FL 33040</span>
+    <span>Open 7 Days · 7AM–7PM · <a href="tel:+13055898981">(305) 589-8981</a></span>
+  </div>
+</div>
+
+<nav class="nav" id="mainNav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span class="nav__logo-name">R&S Cleaning Solutions</span>
+      <span class="nav__logo-tag">Key West · One-Stop Property Service</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Reggie</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="book.html" class="btn btn--book btn--sm">Book Now</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="tel:+13055898981" class="nav__phone">📞 (305) 589-8981</a>
+    </div>
+    <div class="nav__hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <span class="label">Reach Out</span>
+    <h1>Contact Reggie</h1>
+    <p class="page-hero__sub">We answer calls and texts 7 days a week. No bots, no hold music — just Reggie.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: INFO -->
+      <div class="contact-info reveal">
+
+        <div class="contact-cards">
+          <a href="tel:+13055898981" class="contact-card contact-card--call">
+            <div class="contact-card__icon">📞</div>
+            <div>
+              <span class="contact-card__label">Call Reggie Now</span>
+              <span class="contact-card__value">(305) 589-8981</span>
+            </div>
+          </a>
+          <a href="sms:+13055898981" class="contact-card contact-card--sms">
+            <div class="contact-card__icon">💬</div>
+            <div>
+              <span class="contact-card__label">Text Reggie Directly</span>
+              <span class="contact-card__value">(305) 589-8981</span>
+            </div>
+          </a>
+          <a href="tel:+17865892735" class="contact-card contact-card--call" style="--accent-dim:rgba(108,92,231,0.08)">
+            <div class="contact-card__icon" style="background:rgba(108,92,231,0.08)">📲</div>
+            <div>
+              <span class="contact-card__label">Secondary Line</span>
+              <span class="contact-card__value" style="color:var(--muted)">(786) 589-2735</span>
+            </div>
+          </a>
+          <a href="mailto:info@rscleaningsolution.com" class="contact-card contact-card--email">
+            <div class="contact-card__icon">✉️</div>
+            <div>
+              <span class="contact-card__label">Email Us</span>
+              <span class="contact-card__value" style="font-size:.9rem">info@rscleaningsolution.com</span>
+            </div>
+          </a>
+          <div class="contact-card contact-card--address" style="cursor:default">
+            <div class="contact-card__icon">📍</div>
+            <div>
+              <span class="contact-card__label">Our Location</span>
+              <span class="contact-card__value">5790 Maloney Ave<br />Key West, FL 33040</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-hours reveal delay-1">
+          <h3>Business Hours</h3>
+          <div class="hours-row"><span>Monday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Tuesday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Wednesday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Thursday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Friday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>7:00 AM – 7:00 PM</span></div>
+        </div>
+
+        <div class="contact-cta-row reveal delay-2">
+          <a href="tel:+13055898981" class="btn btn--gold">📞 Call Reggie Now</a>
+          <a href="sms:+13055898981" class="btn btn--sms">💬 Text Reggie Directly</a>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: MAP -->
+      <div class="contact-map reveal delay-2">
+        <div class="map-frame">
+          <iframe
+            title="R&S Cleaning Solutions location — 5790 Maloney Ave, Key West FL"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.3127!2d-81.7387!3d24.5551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d1b4f3e9a5b123%3A0x0!2s5790%20Maloney%20Ave%2C%20Key%20West%2C%20FL%2033040!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="map-caption">
+          <div class="map-caption__icon">📍</div>
+          <div class="map-caption__text">
+            <strong>R&S Cleaning Solutions</strong>
+            5790 Maloney Ave, Key West, FL 33040<br />
+            Stock Island area — serving all of Monroe County
+          </div>
+        </div>
+
+        <!-- Social proof bar -->
+        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+          <a href="https://www.yelp.com/biz/r-and-s-cleaning-solutions-key-west" target="_blank" rel="noopener"
+             style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .2s"
+             onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <span style="font-size:1.4rem">⭐</span>
+            <div>
+              <div style="font-family:var(--font-h);font-size:.85rem;font-weight:700">5.0 on Yelp</div>
+              <div style="font-size:.75rem;color:var(--muted)">21 reviews</div>
+            </div>
+          </a>
+          <a href="https://www.facebook.com/people/RS-cleaning-solutions/61572255374780/" target="_blank" rel="noopener"
+             style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--text);transition:border-color .2s"
+             onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <span style="font-size:1.4rem">📘</span>
+            <div>
+              <div style="font-family:var(--font-h);font-size:.85rem;font-weight:700">Follow on Facebook</div>
+              <div style="font-size:.75rem;color:var(--muted)">Latest updates</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUICK MESSAGE FORM -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);padding-top:56px">
+  <div class="container">
+    <div class="quick-form-header reveal">
+      <span class="label">Send a Message</span>
+      <h2>Quick Question? Drop Us a Line.</h2>
+      <p>We'll reply same day — usually faster. Or just call: <a href="tel:+13055898981" style="color:var(--accent);font-weight:600">(305) 589-8981</a></p>
+    </div>
+    <div class="quick-form-card reveal delay-1">
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="form-group">
+          <label for="cName">Your Name *</label>
+          <input type="text" id="cName" name="name" placeholder="First and Last" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="cPhone">Phone *</label>
+          <input type="tel" id="cPhone" name="phone" placeholder="(305) 000-0000" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="cEmail">Email (optional)</label>
+          <input type="email" id="cEmail" name="email" placeholder="you@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="cMessage">Your Message *</label>
+          <textarea id="cMessage" name="message" placeholder="What do you need? We'll get right back to you." required></textarea>
+        </div>
+        <button type="submit" class="btn--submit-contact">Send Message →</button>
+        <input type="hidden" name="_subject" value="Contact Form — R&S Cleaning Solutions" />
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">R&S Cleaning Solutions</div>
+        <div class="footer__brand-tag">Clean Spaces, Clear Minds, Total Solutions</div>
+        <p class="footer__brand-desc">Key West's all-in-one property care experts. One call, total peace of mind.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/people/RS-cleaning-solutions/61572255374780/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">📘</a>
+          <a href="https://www.yelp.com/biz/r-and-s-cleaning-solutions-key-west" target="_blank" rel="noopener" class="footer__social-link" aria-label="Yelp">⭐</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Pages</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services &amp; Pricing</a></li>
+          <li><a href="about.html">About Reggie</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <ul class="footer__links">
+          <li><a href="tel:+13055898981">📞 (305) 589-8981</a></li>
+          <li><a href="sms:+13055898981">💬 Text Reggie</a></li>
+          <li><a href="mailto:info@rscleaningsolution.com">✉️ Email Reggie</a></li>
+          <li style="color:#5A7090;font-size:.84rem;padding:4px 0;line-height:1.6">📍 5790 Maloney Ave<br />Key West, FL 33040</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 R&S Cleaning Solutions · Key West, FL</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-mobile-cta">
+  <a href="tel:+13055898981" class="btn btn--call">📞 Call Reggie</a>
+  <a href="sms:+13055898981" class="btn btn--sms">💬 Text Us</a>
+  <a href="book.html" class="btn btn--book">Book Now</a>
+</div>
+
+<script>
+const nav = document.getElementById('mainNav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+hamburger.addEventListener('keydown', e => { if(e.key==='Enter') navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold:0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>

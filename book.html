@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Book a Service — R&S Cleaning Solutions Key West</title>
+  <meta name="description" content="Book R&S Cleaning Solutions for moving, cleaning, detailing, landscaping, or any property service in Key West. Free quotes. 7 days a week." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .book-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .book-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .book-intro h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.15;
+      margin: 8px 0 12px;
+    }
+    .book-intro p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .book-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow);
+    }
+    @media(max-width:640px) {
+      .book-card { padding: 28px 20px; }
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media(max-width:540px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--text);
+      font-family: var(--font-h);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      font-size: 16px;
+      font-family: var(--font-b);
+      color: var(--text);
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      min-height: 44px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color .2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230984e3' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+    }
+    .form-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .form-group input[type="date"] {
+      color: var(--text);
+    }
+    .form-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 28px 0;
+    }
+    .form-section-label {
+      font-family: var(--font-h);
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .policy-box {
+      background: #FFF5F5;
+      border: 1.5px solid #FFB3B3;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .policy-box p {
+      font-size: .875rem;
+      color: #7A0000;
+      line-height: 1.65;
+      margin: 0 0 12px;
+    }
+    .policy-box p strong {
+      color: #C0392B;
+    }
+    .policy-check-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .policy-check-wrap input[type="checkbox"] {
+      width: 20px;
+      min-height: 20px;
+      height: 20px;
+      accent-color: #C0392B;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+    }
+    .policy-check-wrap label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #7A0000;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+    .wait-warning {
+      font-family: var(--font-h);
+      font-weight: 800;
+      font-size: 1rem;
+      color: #C0392B;
+      text-align: center;
+      margin-bottom: 20px;
+      background: #FFF5F5;
+      border: 2px solid #FFB3B3;
+      border-radius: 10px;
+      padding: 14px 16px;
+      line-height: 1.4;
+    }
+    .btn--submit {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: var(--font-h);
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 16px 24px;
+      cursor: pointer;
+      min-height: 52px;
+      transition: background .2s, transform .1s;
+      letter-spacing: .01em;
+    }
+    .btn--submit:hover { background: #0773c5; }
+    .btn--submit:active { transform: scale(.98); }
+    .book-alt {
+      text-align: center;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+    .book-alt a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .book-alt a:hover { text-decoration: underline; }
+    .required-note {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span>📍 5790 Maloney Ave, Key West, FL 33040</span>
+    <span>Open 7 Days · 7AM–7PM · <a href="tel:+13055898981">(305) 589-8981</a></span>
+  </div>
+</div>
+
+<nav class="nav" id="mainNav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span class="nav__logo-name">R&S Cleaning Solutions</span>
+      <span class="nav__logo-tag">Key West · One-Stop Property Service</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Reggie</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="book.html" class="btn btn--book btn--sm active">Book Now</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="tel:+13055898981" class="nav__phone">📞 (305) 589-8981</a>
+    </div>
+    <div class="nav__hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<main class="book-wrap">
+  <div class="book-intro reveal">
+    <span class="label">Get Started</span>
+    <h1>Book Your Service</h1>
+    <p>Fill out the form below and Reggie will get back to you same day — usually within the hour. Free quotes on everything.</p>
+  </div>
+
+  <div class="book-card reveal delay-1">
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="bookingForm" novalidate>
+
+      <!-- CONTACT INFO -->
+      <span class="form-section-label">Your Information</span>
+      <p class="required-note">Fields marked * are required.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="first_name" placeholder="Key" required autocomplete="given-name" />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="last_name" placeholder="West" required autocomplete="family-name" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Service Address *</label>
+        <input type="text" id="address" name="address" placeholder="123 Duval St, Key West, FL 33040" required autocomplete="street-address" />
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- SERVICE DETAILS -->
+      <span class="form-section-label">Service Details</span>
+
+      <div class="form-group">
+        <label for="serviceType">Service Requested *</label>
+        <select id="serviceType" name="service_type" required>
+          <option value="" disabled selected>— Select a service —</option>
+          <optgroup label="Moving &amp; Transition">
+            <option value="Island Concierge Move ($1,750+)">Island Concierge Move — Full Pack, Move &amp; Clean ($1,750+)</option>
+            <option value="Fresh Start Move ($1,200+)">Fresh Start Move — Haul, Move &amp; Clean ($1,200+)</option>
+            <option value="Quick Lift ($225/hr)">Quick Lift — Labor Only ($225/hr)</option>
+            <option value="Move-Out Clean ($225–$550)">Move-Out Cleaning Only ($225–$550)</option>
+          </optgroup>
+          <optgroup label="Cleaning">
+            <option value="Residential Cleaning">Residential Cleaning (Regular or One-Time)</option>
+            <option value="Post-Construction Cleaning">Post-Construction Cleaning</option>
+            <option value="Move-In Cleaning">Move-In Deep Clean</option>
+            <option value="Sanitation &amp; Disinfecting">Sanitation &amp; Disinfecting</option>
+            <option value="Commercial Cleaning">Commercial / Office Cleaning</option>
+          </optgroup>
+          <optgroup label="Detailing">
+            <option value="Auto Detail - Basic ($150)">Auto Detail — Basic ($150)</option>
+            <option value="Auto Detail - Full ($250+)">Auto Detail — Full Package ($250+)</option>
+            <option value="Boat Detail - Basic ($20/ft)">Boat Detail — Basic ($20/ft)</option>
+            <option value="Boat Detail - Premium ($40–$60/ft)">Boat Detail — Premium ($40–$60/ft)</option>
+          </optgroup>
+          <optgroup label="Outdoor &amp; Property">
+            <option value="Landscaping - Standard ($75/visit)">Landscaping — Standard Maintenance ($75/visit)</option>
+            <option value="Landscaping - Tropical ($65/hr)">Landscaping — Tropical Care ($65/hr)</option>
+            <option value="Pressure Washing">Pressure / Deep Washing</option>
+            <option value="Wood Cleaning">Wood &amp; Deck Cleaning</option>
+            <option value="Window Washing">Window Washing</option>
+            <option value="Trash Can Cleaning">Trash Can Cleaning &amp; Sanitizing</option>
+            <option value="Junk Removal ($150+)">Junk Removal &amp; Bulk Haul ($150+)</option>
+            <option value="Extermination">Pest Control / Extermination</option>
+          </optgroup>
+          <optgroup label="Recurring Plans">
+            <option value="Weekly Plan">Weekly Service Plan</option>
+            <option value="Bi-Weekly Plan">Bi-Weekly Service Plan (Most Popular)</option>
+            <option value="Monthly Plan">Monthly Service Plan</option>
+          </optgroup>
+          <option value="Not Sure / Get a Quote">Not Sure — Send Me a Quote</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="preferredDate">Preferred Date *</label>
+          <input type="date" id="preferredDate" name="preferred_date" required />
+        </div>
+        <div class="form-group">
+          <label for="preferredTime">Preferred Time</label>
+          <select id="preferredTime" name="preferred_time">
+            <option value="" disabled selected>— Any time —</option>
+            <option>7:00 AM – 9:00 AM</option>
+            <option>9:00 AM – 11:00 AM</option>
+            <option>11:00 AM – 1:00 PM</option>
+            <option>1:00 PM – 3:00 PM</option>
+            <option>3:00 PM – 5:00 PM</option>
+            <option>5:00 PM – 7:00 PM</option>
+            <option>Flexible — Any Time</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="squareFt">Property Size (optional)</label>
+        <select id="squareFt" name="property_size">
+          <option value="" disabled selected>— Approximate square footage —</option>
+          <option>Under 500 sq ft (Studio / Efficiency)</option>
+          <option>500–1,000 sq ft (1 Bed)</option>
+          <option>1,000–1,500 sq ft (2 Bed)</option>
+          <option>1,500–2,500 sq ft (3 Bed)</option>
+          <option>2,500+ sq ft (Large Home)</option>
+          <option>Commercial / Office Space</option>
+          <option>Boat / Marine Vessel</option>
+          <option>Vehicle</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" placeholder="Any details that will help Reggie quote accurately — # of bedrooms, floors, special requests, access instructions, etc."></textarea>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <!-- WAIT-TIME POLICY -->
+      <div class="policy-box">
+        <p>
+          <strong>⏱️ Wait-Time Policy — Please Read:</strong><br />
+          If our crew arrives on time and must wait more than 30 minutes before the job can start — due to access issues, unpacked items, locked gates, or other delays — that wait time is billed at <strong>1 hour of labor</strong>. Being prepared protects your budget and keeps the island moving!
+        </p>
+        <div class="policy-check-wrap">
+          <input type="checkbox" id="waitTimeAgree" name="wait_time_policy" value="agreed" required />
+          <label for="waitTimeAgree">I understand the 30-minute wait-time policy and agree to its terms. *</label>
+        </div>
+      </div>
+
+      <div class="wait-warning" aria-live="polite">
+        ⚠️ Reminder: 30 mins wait = 1 hour charge.<br />Let's keep the island moving!
+      </div>
+
+      <button type="submit" class="btn--submit">Send Booking Request →</button>
+
+      <input type="hidden" name="_subject" value="New Booking Request — R&S Cleaning Solutions" />
+      <input type="hidden" name="_next" value="https://keywestkate.github.io/reggie-website/thank-you.html" />
+    </form>
+  </div>
+
+  <div class="book-alt reveal delay-2">
+    <p>Prefer to talk? Call or text Reggie directly — same-day response, 7 days a week.</p>
+    <p>
+      <a href="tel:+13055898981">📞 (305) 589-8981</a> &nbsp;·&nbsp;
+      <a href="sms:+13055898981">💬 Text Reggie</a> &nbsp;·&nbsp;
+      <a href="mailto:info@rscleaningsolution.com">✉️ info@rscleaningsolution.com</a>
+    </p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__brand-name">R&S Cleaning Solutions</div>
+        <div class="footer__brand-tag">Clean Spaces, Clear Minds, Total Solutions</div>
+        <p class="footer__brand-desc">Key West's all-in-one property care experts. One call, total peace of mind.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/people/RS-cleaning-solutions/61572255374780/" target="_blank" rel="noopener" class="footer__social-link" aria-label="Facebook">📘</a>
+          <a href="https://www.yelp.com/biz/r-and-s-cleaning-solutions-key-west" target="_blank" rel="noopener" class="footer__social-link" aria-label="Yelp">⭐</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Pages</div>
+        <ul class="footer__links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services &amp; Pricing</a></li>
+          <li><a href="about.html">About Reggie</a></li>
+          <li><a href="book.html">Book Now</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <ul class="footer__links">
+          <li><a href="tel:+13055898981">📞 (305) 589-8981</a></li>
+          <li><a href="sms:+13055898981">💬 Text Reggie</a></li>
+          <li><a href="mailto:info@rscleaningsolution.com">✉️ Email Reggie</a></li>
+          <li style="color:#5A7090;font-size:.84rem;padding:4px 0;line-height:1.6">📍 5790 Maloney Ave<br />Key West, FL 33040</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 R&S Cleaning Solutions · Key West, FL</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-mobile-cta">
+  <a href="tel:+13055898981" class="btn btn--call">📞 Call Reggie</a>
+  <a href="sms:+13055898981" class="btn btn--sms">💬 Text Us</a>
+  <a href="book.html" class="btn btn--book">Book Now</a>
+</div>
+
+<script>
+const nav = document.getElementById('mainNav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+hamburger.addEventListener('keydown', e => { if(e.key==='Enter') navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold:0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Set min date to today
+const dateInput = document.getElementById('preferredDate');
+if (dateInput) {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+}
+
+// Form validation
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  const checkbox = document.getElementById('waitTimeAgree');
+  if (!checkbox.checked) {
+    e.preventDefault();
+    checkbox.closest('.policy-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    checkbox.focus();
+    alert('Please confirm the wait-time policy before submitting.');
+  }
+});
+</script>
+</body>
+</html>

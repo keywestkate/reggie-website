@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Thank You — R&S Cleaning Solutions Key West</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .ty-wrap {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+    .ty-card {
+      text-align: center;
+      max-width: 520px;
+    }
+    .ty-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .ty-card h1 {
+      font-family: var(--font-h);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 14px;
+    }
+    .ty-card p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .ty-card p strong { color: var(--text); }
+    .ty-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <span>📍 5790 Maloney Ave, Key West, FL 33040</span>
+    <span>Open 7 Days · 7AM–7PM · <a href="tel:+13055898981">(305) 589-8981</a></span>
+  </div>
+</div>
+
+<nav class="nav" id="mainNav">
+  <div class="container nav__inner">
+    <a href="index.html" class="nav__logo">
+      <span class="nav__logo-name">R&S Cleaning Solutions</span>
+      <span class="nav__logo-tag">Key West · One-Stop Property Service</span>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Reggie</a></li>
+      <li><a href="index.html#reviews">Reviews</a></li>
+      <li><a href="book.html" class="btn btn--book btn--sm">Book Now</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="tel:+13055898981" class="nav__phone">📞 (305) 589-8981</a>
+    </div>
+    <div class="nav__hamburger" id="hamburger" role="button" tabindex="0" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="ty-wrap">
+  <div class="ty-card">
+    <span class="ty-icon">🌴</span>
+    <h1>We Got Your Request!</h1>
+    <p>
+      <strong>Reggie will be in touch same day</strong> — usually within the hour.<br /><br />
+      In the meantime, feel free to call or text directly at <a href="tel:+13055898981" style="color:var(--accent);font-weight:600">(305) 589-8981</a>. We're on island time, but we move fast.
+    </p>
+    <div class="ty-btns">
+      <a href="tel:+13055898981" class="btn btn--gold">📞 Call Reggie Now</a>
+      <a href="index.html" class="btn btn--outline">← Back to Home</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom">
+      <span>© 2026 R&S Cleaning Solutions · Key West, FL</span>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky-mobile-cta">
+  <a href="tel:+13055898981" class="btn btn--call">📞 Call Reggie</a>
+  <a href="sms:+13055898981" class="btn btn--sms">💬 Text Us</a>
+  <a href="book.html" class="btn btn--book">Book Now</a>
+</div>
+
+<script>
+const nav = document.getElementById('mainNav');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive:true });
+hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+hamburger.addEventListener('keydown', e => { if(e.key==='Enter') navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
